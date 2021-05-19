@@ -60,7 +60,11 @@ class Cipher {
 
     //функция расшифрования шифра Виженера
     VigenereDecryption(key, text) {
-        text = text.toLowerCase();
+        if (key === key.toUpperCase()){
+            text = text.toLowerCase();
+        } else {
+            key = key.toUpperCase();
+        }
         let keys = '';
         let itog = '';
         while (keys.length <= text.length){
@@ -93,6 +97,21 @@ console.log('\t')
 console.log('Шифр Виженера с ключевым словом ЗАЩИТА:')
 console.log(`Зашифрованная строка: ${cipher.VigenereEncryption("ЗАЩИТА", "ЗАШИФРОВАТЬ СТРОКУ МЕТОДОМ ВИЖЕНЕРА")}`);
 console.log(`Расшифрованная строка: ${cipher.VigenereDecryption("ЗАЩИТА", "ОАСРЖРХВЩЪО СЩРЗТЕ ММТЗМАМ ЙИЯНЯЕЧА")}`);
+console.log('\n')
+
+
+
+
+
+let cip = new Cipher('а', 'я');
+console.log('\t')
+console.log('Шифр Цезаря с ключом 3')
+console.log(`Зашифрованная строка: ${cip.CaesarEncryption('съешь же еще этих мягких французких булок, да выпей чаю.', 'в')}`);
+console.log(`Расшифрованная строка: ${cip.CaesarDecryption('фэиыя йи иьи ахлш пвжнлш чугрщцкнлш дцосн, зг еютим ъгб.', 'в')}`);
+console.log('\t')
+console.log('Шифр Виженера с ключевым словом ЗАЩИТА:')
+console.log(`Зашифрованная строка: ${cip.VigenereEncryption("защита", "зашифровать строку методом виженера")}`);
+console.log(`Расшифрованная строка: ${cip.VigenereDecryption("защита", "оасржрхвщъо сщрзте ммтзмам йияняеча")}`);
 
 
 //https://planetcalc.com/embed/?id=0F9BLe4qg6VXBVfrzT-76yjijelK2pwKYIVORBiHeXOtElZxWpxxLNHGTGRnftISSRsxG6mEMjnOybjq8p-9Wl6cR5_YpcXA&language_select=ru
